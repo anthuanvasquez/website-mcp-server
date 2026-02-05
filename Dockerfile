@@ -40,5 +40,8 @@ RUN pnpm install --prod --frozen-lockfile
 # Copy built artifacts from builder
 COPY --from=builder /app/dist ./dist
 
+# Ensure data directory exists
+RUN mkdir -p data
+
 # Standard MCP entry point
 ENTRYPOINT ["node", "dist/main.js"]
