@@ -70,7 +70,41 @@ Para usarlo en tu día a día con Claude, añade la configuración a tu archivo 
     pnpm dev
     ```
 
-3.  Construir para producción:
-    ```bash
     pnpm build
     ```
+
+## 🚀 Despliegue y Versiones
+
+El proyecto utiliza **GitHub Actions** para la Integración y Despliegue Continuo (CI/CD).
+
+### Flujo de Trabajo (Workflow)
+
+Cada vez que haces un **push a la rama `main`**, se dispara automáticamente el workflow de despliegue (`.github/workflows/deploy.yml`).
+
+Este proceso realiza lo siguiente:
+1.  **Build**: Construye la imagen Docker del servidor.
+2.  **Push**: Sube la imagen a **GitHub Container Registry (GHCR)**.
+3.  **Tags**: La imagen se etiqueta con:
+    *   `latest`: La versión más reciente.
+    *   `sha-<commit-hash>`: El hash corto del commit (ej. `sha-a1b2c3d`) para trazabilidad.
+
+### Gestión de Versiones
+
+Para lanzar una nueva versión con cambios significativos:
+
+1.  **Actualizar Versión**: Incrementa la versión en el archivo `package.json` (ej. de `0.1.0` a `0.1.1`).
+    ```bash
+    npm version patch # o minor, major
+    ```
+2.  **Commit y Push**: Sube tus cambios a `main`.
+    ```bash
+    git add .
+    git commit -m "chore(release): bump version to 0.1.1"
+    git push origin main
+    ```
+3.  **Despliegue Automático**: GitHub Actions detectará el push y creará la nueva imagen en GHCR.
+
+### Uso de la Imagen
+
+La imagen estará disponible en:
+`ghcr.io/anthuanvasquez/anthuan-mcp-server:latest`
