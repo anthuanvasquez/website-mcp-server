@@ -2,6 +2,8 @@ node_modules/
 dist/
 build/
 coverage/
+data/profile.json
+!data/.gitkeep
 .idea/
 .env
 .DS_Store
