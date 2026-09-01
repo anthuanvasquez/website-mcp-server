@@ -1,6 +1,6 @@
-# Anthuan MCP Server
+# Website MCP Server
 
-Un servidor MCP (Model Context Protocol) diseñado para compartir información profesional estructurada con LLMs. Este servidor permite a los asistentes de IA acceder a tu biografía, habilidades, experiencia, proyectos y educación de manera semántica.
+Un servidor MCP diseñado para compartir información profesional estructurada con LLMs. Este servidor permite a los asistentes de IA acceder a tu biografía, habilidades, experiencia, proyectos y educación de manera semántica.
 
 ## 🚀 Características
 
@@ -46,10 +46,10 @@ Para usarlo en tu día a día con Claude, añade la configuración a tu archivo 
 ```json
 {
   "mcpServers": {
-    "anthuan-profile": {
+    "profile": {
       "command": "node",
       "args": [
-        "/ABSOLUTE/PATH/TO/anthuan-mcp-server/dist/main.js"
+        "/ABSOLUTE/PATH/TO/website-mcp-server/dist/main.js"
       ]
     }
   }
@@ -107,4 +107,4 @@ Para lanzar una nueva versión con cambios significativos:
 ### Uso de la Imagen
 
 La imagen estará disponible en:
-`ghcr.io/anthuanvasquez/anthuan-mcp-server:latest`
+`ghcr.io/anthuanvasquez/website-mcp-server:latest`

@@ -1,7 +1,7 @@
 services:
   mcp-server:
     build: .
-    container_name: anthuan-mcp-server
+    container_name: website-mcp-server
     # Keep container running and interactive for Stdio communication
     stdin_open: true # -i
     tty: true        # -t

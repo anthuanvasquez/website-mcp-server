@@ -33,7 +33,7 @@ export class ProfessionalProfileServer {
 
     this.server = new Server(
       {
-        name: 'anthuan-mcp-server',
+        name: 'website-mcp-server',
         version: '0.1.0',
         description: 'Servidor MCP para compartir información profesional con LLMs'
       },
@@ -57,7 +57,7 @@ export class ProfessionalProfileServer {
 
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args } = request.params;
-      
+
       switch (name) {
         case 'get_profile':
           return this.toolHandlers.handleGetProfile(args);
