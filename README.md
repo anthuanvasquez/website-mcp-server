@@ -70,6 +70,8 @@ Para usarlo en tu día a día con Claude, añade la configuración a tu archivo 
     pnpm dev
     ```
 
+3. Construir para producción:
+    ```bash
     pnpm build
     ```
 
