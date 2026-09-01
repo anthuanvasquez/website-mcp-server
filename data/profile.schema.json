@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://anthuanvasquez.net/schemas/profile.schema.json",
+  "title": "ProfessionalProfile",
+  "description": "Schema for the professional profile data used by the website MCP server.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "personalInfo",
+    "bio",
+    "skills",
+    "experiences",
+    "projects",
+    "education",
+    "certifications",
+    "languages"
+  ],
+  "properties": {
+    "personalInfo": { "$ref": "#/definitions/personalInfo" },
+    "bio": { "$ref": "#/definitions/bio" },
+    "skills": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/skill" }
+    },
+    "experiences": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/experience" }
+    },
+    "projects": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/project" }
+    },
+    "education": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/education" }
+    },
+    "certifications": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/certification" }
+    },
+    "languages": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/language" }
+    }
+  },
+  "definitions": {
+    "personalInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "title", "location", "email"],
+      "properties": {
+        "name": { "type": "string" },
+        "title": { "type": "string" },
+        "location": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "github": { "type": "string", "format": "uri" },
+        "website": { "type": "string", "format": "uri" }
+      }
+    },
+    "bio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "objectives", "values"],
+      "properties": {
+        "summary": { "type": "string" },
+        "objectives": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "values": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "skill": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "category", "level"],
+      "properties": {
+        "name": { "type": "string" },
+        "category": {
+          "type": "string",
+          "enum": ["technical", "soft", "language", "tool"]
+        },
+        "level": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced", "expert"]
+        },
+        "yearsOfExperience": { "type": "number", "minimum": 0 }
+      }
+    },
+    "experience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "company",
+        "position",
+        "startDate",
+        "current",
+        "description",
+        "achievements",
+        "technologies"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "company": { "type": "string" },
+        "position": { "type": "string" },
+        "startDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "endDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "current": { "type": "boolean" },
+        "description": { "type": "string" },
+        "achievements": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "technologies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "location": { "type": "string" }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description",
+        "technologies",
+        "startDate",
+        "status",
+        "highlights"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "technologies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "startDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "endDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "status": {
+          "type": "string",
+          "enum": ["completed", "in-progress", "on-hold"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "repository": { "type": "string", "format": "uri" },
+        "highlights": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "role": { "type": "string" }
+      }
+    },
+    "education": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "institution", "degree", "field", "startDate"],
+      "properties": {
+        "id": { "type": "string" },
+        "institution": { "type": "string" },
+        "degree": { "type": "string" },
+        "field": { "type": "string" },
+        "startDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "endDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" },
+        "gpa": { "type": "string" },
+        "honors": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "relevant_coursework": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "certification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "issuer", "dateObtained"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "issuer": { "type": "string" },
+        "dateObtained": { "type": "string", "format": "date" },
+        "expirationDate": { "type": "string", "format": "date" },
+        "credentialId": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["language", "proficiency"],
+      "properties": {
+        "language": { "type": "string" },
+        "proficiency": {
+          "type": "string",
+          "enum": ["basic", "conversational", "fluent", "native"]
+        }
+      }
+    }
+  }
+}
